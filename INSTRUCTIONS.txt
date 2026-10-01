@@ -1,0 +1,87 @@
+========================================================================
+    FRUIT & VEGETABLE IMAGE CLASSIFICATION PROJECT (EFFICIENTNETB0)
+========================================================================
+
+PROJECT STRUCTURE
+-----------------
+ML_PROJECT/
+│
+├── dataset/                    <-- Ignored by Git (Must be added locally)
+│   ├── train/                  <-- 36 subfolders of fruit/veg classes
+│   ├── validation/             <-- 36 subfolders
+│   └── test/                   <-- 36 subfolders
+│
+├── eda.py                      <-- Exploratory Data Analysis & Visualization
+├── data_preprocessing.py      <-- Image resizing, normalization & augmentation
+├── train_efficientnet.py      <-- Model training & fine-tuning (Transfer Learning)
+├── eval_efficientnet.py       <-- Evaluation (Accuracy, F1-Score, Confusion Matrix)
+├── app.py                      <-- Streamlit Web Application
+├── efficientnet_b0_fruit_veg.h5<-- Saved model weights (Generated after training)
+└── INSTRUCTIONS.txt            <-- Execution guide
+
+
+1. DATASET SETUP (CRITICAL)
+---------------------------
+Since the dataset directory is excluded via .gitignore to optimize repository size:
+
+1. Download the dataset from Kaggle:
+   https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+
+2. Extract the downloaded zip file into the project directory under `dataset/`.
+   Ensure the following directory hierarchy:
+   - dataset/train/<class_names>/
+   - dataset/validation/<class_names>/
+   - dataset/test/<class_names>/
+
+
+2. PREREQUISITES & INSTALLATION
+-------------------------------
+Make sure Python 3.9+ is installed. Install all required packages using pip:
+
+$ pip install tensorflow pandas numpy matplotlib seaborn pillow scikit-learn streamlit
+
+OR
+
+$ pip install -r requirements.txt
+
+3. EXECUTION STEPS
+------------------
+
+Step 1: Exploratory Data Analysis (EDA)
+--------------------------------------
+Inspect dataset statistics, class distribution, and display random sample images:
+> python eda.py
+
+Step 2: Verify Data Preprocessing
+---------------------------------
+Verify directory paths, target dimensions (224x224), and data generator flows:
+> python data_preprocessing.py
+
+Step 3: Model Training & Fine-Tuning
+------------------------------------
+Train the EfficientNetB0 model using two-stage Transfer Learning:
+  - Phase 1: Feature Extraction with frozen ImageNet base weights.
+  - Phase 2: Fine-Tuning top 30 layers with a lower learning rate.
+The best model checkpoint will be saved automatically as `efficientnet_b0_fruit_veg.h5`.
+> python train_efficientnet.py
+
+Step 4: Model Evaluation
+------------------------
+Evaluate the trained model on the unseen test set to generate classification metrics
+(Accuracy, Precision, Recall, F1-Score) and export the Confusion Matrix image:
+> python eval_efficientnet.py
+
+Step 5: Run Interactive Streamlit App
+-------------------------------------
+Launch the local web application to upload custom images and perform live predictions:
+> streamlit run app.py
+
+The application will open automatically in your browser at http://localhost:8501.
+
+
+4. TROUBLESHOOTING
+------------------
+- If Streamlit throws a `use_column_width` error, ensure line 61 in `app.py` 
+  uses `use_container_width=True`.
+- If GPU memory errors occur during training, reduce `BATCH_SIZE` from 32 to 16 
+  in `train_efficientnet.py`.
