@@ -28,7 +28,7 @@ The model was adapted for this project by replacing or modifying its final class
 
 ## Dataset
 
-You can get on kaggle.com
+Get it on kaggle.com
 -> Link: https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
 
 The dataset consists of labeled fruit images organized by category.
