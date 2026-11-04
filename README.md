@@ -26,6 +26,14 @@ EfficientNet models use compound scaling to balance network depth, width, and im
 
 The model was adapted for this project by replacing or modifying its final classification layer to match the number of fruit categories in the dataset.
 
+## Android App
+
+`fruit_recognition_app/` is a Flutter app that classifies the live camera feed on-device with the trained model, converted to TFLite.
+
+See [`fruit_recognition_app/README.md`](fruit_recognition_app/README.md) for build and APK instructions.
+
+The prebuilt APK is at `fruit_recognition_app/dist/FruitScanner-v1.0.apk`.
+
 ## Dataset
 
 Get it on kaggle.com
