@@ -2,13 +2,13 @@ hychung1/ML_EfficientNet-B0_Fruit_Recognition
 
 # Fruit Recognition Using EfficientNet-B0
 
-A machine learning school project that uses the EfficientNet-B0 convolutional neural network to classify images of fruits.
+A machine learning university project that uses the EfficientNet-B0 convolutional neural network to classify images of fruits.
 
 ## Project Overview
 
 The goal of this project is to build an image-classification model capable of recognizing different types of fruit from images. The project uses transfer learning with EfficientNet-B0, a lightweight convolutional neural network designed to achieve strong image-classification performance with relatively few computational resources.
 
-This project was created for educational purposes as part of a machine learning school project.
+This project was created for educational purposes as part of a machine learning university project.
 
 ## Objectives
 
